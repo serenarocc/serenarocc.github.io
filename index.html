@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Serena Rocchio – Cybersecurity Engineer. Portfolio of security projects.">
+    <title>Serena Rocchio | Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="screen/icona2.svg" type="image/svg+xml">
+
+    <style>
+        .projects-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 1.5rem !important;
+            width: 100% !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+        }
+
+        .project-card {
+            width: 100% !important;
+            min-width: 0 !important;
+            padding: 1.5rem 1rem !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card img {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 160px !important;
+            object-fit: cover !important;
+        }
+
+        /* Tag delle competenze */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+            margin: 0.6rem 0 1rem;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            border-radius: 1rem;
+            background-color: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            color: var(--tag-color);
+            letter-spacing: 0.3px;
+            transition: 0.2s ease-in-out;
+        }
+
+        .project-card:hover .tag {
+            border-color: rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Gestione seconda riga progetti */
+        .extra-project {
+            display: none !important;
+        }
+
+        .view-all-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 3.5rem;
+        }
+
+        #toggle-projects-btn {
+            background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 3rem;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        #toggle-projects-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to left, rgb(0, 157, 255), rgb(255, 0, 255));
+        }
+
+        /* Pulsante Theme Switcher */
+        .theme-toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--header-text);
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.15) rotate(15deg);
+            color: rgb(0, 157, 255);
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <a href="#" class="logo"><span>Serena Rocchio</span></a>
+
+        <ul class="nav-links">
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+        </ul>
+        
+        <!-- Icona cambio tema -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" type="button">
+            <i class="fa-solid fa-sun" id="theme-icon"></i>
+        </button>
+
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+
+        <a
+            href="https://github.com/serenarocc"
+            class="visit-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Visit GitHub
+        </a> 
+    </header>
+    
+    <section id="about" class="about">
+        <div class="about-container">
+            <img src="screen/foto-cv.png" alt="Headshot di Serena Rocchio">
+
+            <div class="info-box">
+                <div class="text">
+                    <h3>Hi, I'm</h3>
+                    <h1>Serena Rocchio</h1>
+                    <span>Cybersecurity Engineer</span>
+                </div>
+
+                <p class="about-desc">
+                    Computer Engineer specialized in Cybersecurity, with experience in Governance, Risk & Compliance (GRC), Risk Assessment, and Security Requirements.
+                </p>
+
+                <div class="socials">
+                    <a
+                        href="https://github.com/serenarocc"
+                        aria-label="GitHub"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/serena-rocchio-b62106290"
+                        aria-label="LinkedIn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="projects-grid">
+            <!-- RIGA 1: Progetto 1 -->
+            <div class="project-card">
+                <img
+                    src="screen/data.png"
+                    alt="Screenshot big data"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <h3>Big Data Analysis</h3>
+                <p>Analysis processing 1 Billion+ records of an international company that tracks tourists as they visit points of interest worldwide.</p>
+                <div class="project-tags">
+                    <span class="tag">Apache Spark</span>
+                    <span class="tag">PySpark</span>
+                    <span class="tag">Jupyter</span>
+                    <span class="tag">Big Data</span>
+                </div>
+                <div class="btn-group">
+                    <a
+                        class="btn"
+                        href="https://github.com/serenarocc/BigData_Tourist_Analysis"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGA 1: Progetto 2 -->
+            <div class="project-card">
+                <img
+                    src="screen/gps2.png"
+                    alt="Screenshot of GNSS Vulnerability project"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <h3>GNSS Vulnerability</h3>
+                <p>Explore how modern receivers calculate Position, Velocity, and Time (PVT) and their susceptibility to intentional attacks and environmental interference.</p>
+                <div class="project-tags">
+                    <span class="tag">GNSS / GPS</span>
+                    <span class="tag">Matlab</span>
+                    <span class="tag">Spoofing & Jamming</span>
+                </div>
+                <div class="btn-group">
+                    <a
+                        class="btn"
+                        href="https://github.com/serenarocc/GNSS-Global-Navigation-Satellite-System"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGA 1: Progetto 3 -->
+            <div class="project-card">
+                <img
+                    src="screen/wifi.png"
+                    alt="Screenshot of Wi-Fi performance evaluation"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <h3>Wi-Fi and Ethernet Performance</h3>
+                <p>Evaluate the efficiency of wireless and physical network links by comparing theoretical predictions with experimental results across various LAN configurations.</p>
+                <div class="project-tags">
+                    <span class="tag">Network Security</span>
+                    <span class="tag">Wireshark</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Traffic Analysis</span>
+                </div>
+                <div class="btn-group">
+                    <a
+                        class="btn"
+                        href="https://github.com/serenarocc/WiFi"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGA 2: Progetto 4  -->
+            <div class="project-card extra-project">
+                <img
+                    src="screen/portfolio.png"
+                    alt="Screenshot of portfolio website"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <h3>Portfolio Website</h3>
+                <p>A responsive personal website built with HTML, CSS, and JavaScript to showcase cybersecurity projects.</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+                <div class="btn-group">
+                    <a
+                        class="btn"
+                        href="https://github.com/serenarocc/serenarocc.github.io.git"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGA 2: Progetto 5 -->
+            <div class="project-card extra-project">
+                <img
+                    src="screen/aiActscreen2.png"
+                    alt="Screenshot of AI Act report"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <h3>AI Act</h3>
+                <p>The AI Compliance Frontier: Balancing Innovation, Risk, and Data Protection.</p>
+                <div class="project-tags">
+                    <span class="tag">AI Governance</span>
+                    <span class="tag">EU AI Act</span>
+                    <span class="tag">GRC & Compliance</span>
+                </div>
+                <div class="btn-group">
+                    <a
+                        class="btn"
+                        href="https://github.com/serenarocc/AI-Act"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGA 2: Progetto 6  -->
+            <div class="project-card extra-project">
+                <img
+                    src="screen/forum4.png"
+                    alt="Screenshot of Web Application project"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <h3>Web Application</h3>
+                <p>An online forum where users can publish posts and comment.</p>
+                <div class="project-tags">
+                    <span class="tag">Web Security</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">React.js</span>
+                    <span class="tag">SQLite</span> 
+                    <span class="tag">2FA</span>
+                    <span class="tag">Express.js</span>
+                    <span class="tag">REST APIs</span>
+                    <span class="tag">Passport.js</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">SPA</span>
+                </div>
+                <div class="btn-group">
+                    <a
+                        class="btn"
+                        href="https://github.com/serenarocc/WebApplication_Forum_Online"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pulsante per mostrare/nascondere la seconda riga -->
+        <div class="view-all-container">
+            <button id="toggle-projects-btn" type="button">View All Projects</button>
+        </div>
+    </section>
+
+    <footer>
+        <ul>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#projects">Projects</a>
+            </li>
+        </ul>
+    </footer>
+
+    <!-- SCRIPT GESTIONE THEME TOGGLE E PROGETTI EXTRA -->
+    <script>
+        // Gestione Toggle Progetti Extra
+        const toggleBtn = document.getElementById('toggle-projects-btn');
+        const extraProjects = document.querySelectorAll('.extra-project');
+
+        toggleBtn.addEventListener('click', () => {
+            const isHidden = extraProjects[0].style.display !== 'flex';
+
+            extraProjects.forEach(card => {
+                if (isHidden) {
+                    card.style.setProperty('display', 'flex', 'important');
+                } else {
+                    card.style.setProperty('display', 'none', 'important');
+                }
+            });
+
+            toggleBtn.textContent = isHidden ? 'Show Less' : 'View All Projects';
+        });
+
+        // Gestione Tema Chiaro / Scuro
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        // Carica tema salvato o default 'dark'
+        const currentTheme = localStorage.getItem('portfolio-theme') || 'dark';
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        } else {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+
+            if (isLight) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('portfolio-theme', 'light');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('portfolio-theme', 'dark');
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
